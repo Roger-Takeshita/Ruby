@@ -11,6 +11,9 @@
       - [Number (Float)](#number-float)
       - [Boolean](#boolean)
       - [Null](#null)
+      - [Array](#array)
+      - [Hash/Object/Dictionary](#hashobjectdictionary)
+    - [Methods](#methods)
 
 # RUBY PROGRAMMING LANGUAGE - FULL COURSE
 
@@ -64,6 +67,14 @@
 ```Ruby
   name = "Roger"
 ```
+
+- Number To String
+
+  ```Ruby
+    age = 33
+    puts "I'm #{age.to_s} years old"
+    # I'm 33 years old
+  ```
 
 - Break line
 
@@ -131,12 +142,13 @@
   temperature = -3
 ```
 
-- Number To String
+- String to integer
 
   ```Ruby
-    age = 33
-    puts "I'm #{age.to_s} years old"
-    # I'm 33 years old
+    num1 = "1"
+    num2 = "2"
+    puts (num1.to_i + num2.to_i)
+    # 3
   ```
 
 - Return integer
@@ -153,6 +165,15 @@
 ```Ruby
   dollar = 4.20
 ```
+
+- String to float
+
+  ```Ruby
+    num1 = "1"
+    num2 = "2.5"
+    puts (num1.to_i + num2.to_f)
+    # 3.5
+  ```
 
 - Return long format
 
@@ -177,3 +198,175 @@
 ```Ruby
   null_value = nil
 ```
+
+#### Array
+
+[Go Back to Contents](#contents)
+
+```Ruby
+  friends = Array["Thaisa", "Yumi", "Mike"]
+  puts friends
+  # Thaisa
+  # Yumi
+  # Mike
+```
+
+- Index
+
+  ```Ruby
+    puts friends[1]
+    # Yumi
+    puts friends[-1]
+    # Mike
+  ```
+
+- Range of index
+
+  ```Ruby
+    puts friends[0,1]
+    # Mike
+    # Thaisa
+  ```
+
+- Length()
+
+  ```Ruby
+    puts friends.length()
+    # 3
+  ```
+
+- Include?
+
+  ```Ruby
+    puts friends.include? "Yumi"
+    # true
+  ```
+
+- Reverse()
+
+  ```Ruby
+    puts friends.reverse()
+    # Mike
+    # Yumi
+    # Thaisa
+  ```
+
+- Sort()
+
+  ```Ruby
+    puts friends.sort()
+    # Mike
+    # Thaisa
+    # Yumi
+  ```
+
+#### Hash/Object/Dictionary
+
+[Go Back to Contents](#contents)
+
+```Ruby
+  states = {
+    "Pennsylvania" => "PA",
+    "New York" => "NY",
+    "Oregon" => "OR"
+  }
+
+  puts states
+  # {"Pennsylvania"=>"PA", "New York"=>"NY", "Oregon"=>"OR"}
+  puts states["New York"]
+  # NY
+```
+
+- Other ways to fetch information from a hash
+
+  ```Ruby
+    statesBrazil = {
+      :Paraná => "PR",
+      :"São Paulo" => "SP",
+      :"Mato Grosso" => "MG"
+    }
+
+    puts statesBrazil[:Paraná]
+    # PR
+    puts statesBrazil[:"São Paulo"]
+    # SP
+  ```
+
+  ```Ruby
+    contact = {
+      1 => "Roger Takeshita",
+      2 => "Thaisa Sakima",
+      3 => "Yumi Sakima"
+    }
+
+    puts contact[1]
+    puts contact[2]
+    puts contact[3]
+
+    # Roger Takeshita
+    # Thaisa Sakima
+    # Yumi Sakima
+  ```
+
+### Methods
+
+[Go Back to Contents](#contents)
+
+```Ruby
+  def putsHi
+    puts "Hi there"
+  end
+
+  putsHi()
+```
+
+- Parameters
+
+  ```Ruby
+    def putsHiToUser(user, age)
+      puts "Hi #{user} #{age.to_s}"
+    end
+
+    putsHiToUser("Roger", 33)
+    # Hi Roger 33
+  ```
+
+- Default parameters
+
+  ```Ruby
+    def putsHiToUser(user, age=10)
+      puts "Hi #{user} #{age.to_s}"
+    end
+
+    putsHiToUser("Roger")
+    # Hi Roger 10
+  ```
+
+- Return Statement
+
+  - By default ruby returns the last line of the code
+
+  ```Ruby
+    def returnString(name="Guest")
+      "Hi #{name}"
+    end
+
+    puts returnString("Yumi")
+    # Hi Yumi
+  ```
+
+  - We can force the return value, by defining **return** keyword
+  - Just like in JS, nothing after the return will be executed
+  - If we add a comma in the return value, ruby will return an array
+
+    ```Ruby
+      def cube(num)
+        return num * num * num, "Cube Volume"
+      end
+
+      data = cube(3)
+      puts data[0]
+      puts data[1]
+      # 27
+      # Cube Volume
+    ```
