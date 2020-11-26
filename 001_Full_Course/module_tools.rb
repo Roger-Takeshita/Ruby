@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Tools module
 module Tools
   def say_hi(name)
     puts "hello #{name}"

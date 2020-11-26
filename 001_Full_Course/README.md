@@ -43,13 +43,13 @@
 - And `print` doesn't add a new line
 
   ```Ruby
-    puts "Roger"
-    print "Takeshita"
+    puts 'Roger'
+    print 'Takeshita'
     # Roger
     # Takeshita
 
-    print "Takeshita"
-    puts "Roger"
+    print 'Takeshita'
+    puts 'Roger'
     # TakeshitaRoger
   ```
 
@@ -58,10 +58,10 @@
 [Go Back to Contents](#contents)
 
 ```Ruby
-  name = "Roger"
-  age = "33"
+  name = 'Roger'
+  age = '33'
   puts "Hi my name is #{name}"
-  puts ("I'm " + age + " years old")
+  puts "I'm #{age} years old"
   # Hi my name is Roger
   # I'm 33 years old
 ```
@@ -77,14 +77,15 @@
 [Go Back to Contents](#contents)
 
 ```Ruby
-  name = "Roger"
+  name = 'Roger'
 ```
 
 - Number To String
 
   ```Ruby
     age = 33
-    puts "I'm #{age.to_s} years old"
+    string_age = age.to_s
+    puts "I'm #{string_age} years old"
     # I'm 33 years old
   ```
 
@@ -100,48 +101,48 @@
 - Trim empty spaces
 
   ```Ruby
-    name = "      Roger Takeshita      "
-    puts name.strip()
+    name = '      Roger Takeshita      '
+    puts name.strip
     # Roger Takeshita
   ```
 
 - Lower case
 
   ```Ruby
-    name = "Roger Takeshita"
-    puts name.downcase()
+    name = 'Roger Takeshita'
+    puts name.downcase
     # roger takeshita
   ```
 
 - Upper case
 
   ```Ruby
-    name = "Roger Takeshita"
-    puts name.upcase()
+    name = 'Roger Takeshita'
+    puts name.upcase
     # ROGER TAKESHITA
   ```
 
 - Length()
 
   ```Ruby
-    name = "Roger Takeshita"
-    puts name.length()
+    name = 'Roger Takeshita'
+    puts name.length
     # 15
   ```
 
 - Include?
 
   ```Ruby
-    name = "Roger Takeshita"
-    puts name.include? "Ro"
+    name = 'Roger Takeshita'
+    puts name.include? 'Ro'
     # true
   ```
 
 - Index()
 
   ```Ruby
-    name = "Roger Takeshita"
-    puts name.index("T")
+    name = 'Roger Takeshita'
+    puts name.index('T')
     # 6
   ```
 
@@ -157,9 +158,9 @@
 - String to integer
 
   ```Ruby
-    num1 = "1"
-    num2 = "2"
-    puts (num1.to_i + num2.to_i)
+    num1 = '1'
+    num2 = '2'
+    puts num1.to_i + num2.to_i
     # 3
   ```
 
@@ -181,9 +182,9 @@
 - String to float
 
   ```Ruby
-    num1 = "1"
-    num2 = "2.5"
-    puts (num1.to_i + num2.to_f)
+    num1 = '1'
+    num2 = '2.5'
+    puts num1.to_i + num2.to_f
     # 3.5
   ```
 
@@ -243,7 +244,7 @@
 - Length()
 
   ```Ruby
-    puts friends.length()
+    puts friends.length
     # 3
   ```
 
@@ -257,7 +258,7 @@
 - Reverse()
 
   ```Ruby
-    puts friends.reverse()
+    puts friends.reverse
     # Mike
     # Yumi
     # Thaisa
@@ -266,7 +267,7 @@
 - Sort()
 
   ```Ruby
-    puts friends.sort()
+    puts friends.sort
     # Mike
     # Thaisa
     # Yumi
@@ -289,68 +290,55 @@
   # NY
 ```
 
-- Other ways to fetch information from a hash
+```Ruby
+  contact = {
+    1 => 'Roger Takeshita',
+    2 => 'Thaisa Sakima',
+    3 => 'Yumi Sakima'
+  }
 
-  ```Ruby
-    statesBrazil = {
-      :Paraná => "PR",
-      :"São Paulo" => "SP",
-      :"Mato Grosso" => "MG"
-    }
+  puts contact[1]
+  puts contact[2]
+  puts contact[3]
 
-    puts statesBrazil[:Paraná]
-    # PR
-    puts statesBrazil[:"São Paulo"]
-    # SP
-  ```
-
-  ```Ruby
-    contact = {
-      1 => "Roger Takeshita",
-      2 => "Thaisa Sakima",
-      3 => "Yumi Sakima"
-    }
-
-    puts contact[1]
-    puts contact[2]
-    puts contact[3]
-
-    # Roger Takeshita
-    # Thaisa Sakima
-    # Yumi Sakima
-  ```
+  # Roger Takeshita
+  # Thaisa Sakima
+  # Yumi Sakima
+```
 
 ### Methods
 
 [Go Back to Contents](#contents)
 
 ```Ruby
-  def putsHi
-    puts "Hi there"
+  def puts_hi
+    puts 'Hi there'
   end
 
-  putsHi()
+  puts_hi
 ```
 
 - Parameters
 
   ```Ruby
     def putsHiToUser(user, age)
-      puts "Hi #{user} #{age.to_s}"
+      string_age = age.to_s
+      puts "Hi #{user} #{string_age}"
     end
 
-    putsHiToUser("Roger", 33)
+    putsHiToUser('Roger', 33)
     # Hi Roger 33
   ```
 
 - Default parameters
 
   ```Ruby
-    def putsHiToUser(user, age=10)
-      puts "Hi #{user} #{age.to_s}"
+    def puts_hi_to_user(user, age = 10)
+      string_age = age.to_s
+      puts "Hi #{user} #{string_age}"
     end
 
-    putsHiToUser("Roger")
+    puts_hi_to_user('Roger')
     # Hi Roger 10
   ```
 
@@ -359,11 +347,11 @@
   - By default ruby returns the last line of the code
 
   ```Ruby
-    def returnString(name="Guest")
+    def return_string(name = 'Guest')
       "Hi #{name}"
     end
 
-    puts returnString("Yumi")
+    puts return_string('Yumi')
     # Hi Yumi
   ```
 
@@ -373,7 +361,7 @@
 
     ```Ruby
       def cube(num)
-        return num * num * num, "Cube Volume"
+        [num * num * num, 'Cube Volume']
       end
 
       data = cube(3)
@@ -390,13 +378,13 @@
 [Go Back to Contents](#contents)
 
 ```Ruby
-  isMale = true
-  isTall = false
+  is_male = true
+  is_tall = false
 
-  if isMale and isTall
-    puts "You are a male and tall"
-  elsif isMale and !isTall
-    puts "Your are male but not tall"
+  if is_male && is_tall
+    puts 'You are a male and tall'
+  elsif is_male && !is_tall
+    puts 'Your are male but not tall'
   else
     puts "You're not a male"
   end
@@ -404,7 +392,8 @@
   # You are male but not tall
 ```
 
-- **and** / **or**
+- **and** / **&&**
+- **or** / **||**
 - comparison
   - **==**
   - **!=**
@@ -418,21 +407,8 @@
 - Option 1 - `for ... in ...`
 
   ```Ruby
-    friends1 = ["Thaisa", "Yumi", "Mike", "Joy"]
+    friends1 = Array['Thaisa', 'Yumi', 'Mike', 'Joy']
 
-    for friend in friends1
-      puts friend
-    end
-
-    # Thaisa
-    # Yumi
-    # Mike
-    # Joy
-  ```
-
-- Option 2 - `...each do |variable|`
-
-  ```Ruby
     friends1.each do |variable|
       puts variable
     end
@@ -490,30 +466,30 @@
     day_name = ''
 
     case day
-    when "mon"
-      day_name = "Monday"
-    when "tue"
-      day_name = "Tuesday"
-    when "wed"
-      day_name = "Wednesday"
-    when "Thu"
-      day_name = "Thursday"
-    when "Fri"
-      day_name = "Friday"
-    when "sat"
-      day_name = "Saturday"
-    when "sun"
-      day_name = "Sunday"
+    when 'mon'
+      day_name = 'Monday'
+    when 'tue'
+      day_name = 'Tuesday'
+    when 'wed'
+      day_name = 'Wednesday'
+    when 'Thu'
+      day_name = 'Thursday'
+    when 'Fri'
+      day_name = 'Friday'
+    when 'sat'
+      day_name = 'Saturday'
+    when 'sun'
+      day_name = 'Sunday'
     else
-      return "Invalid abbreviation"
+      return 'Invalid abbreviation'
     end
 
-    return day_name
+    day_name
   end
 
-  puts get_day_name("mon")
+  puts get_day_name('mon')
   # Monday
-  puts get_day_name("Hi")
+  puts get_day_name('Hi')
   # Invalid abbreviation
 ```
 
@@ -568,9 +544,9 @@
 
 ```Ruby
   begin
-    num = 10 / 0
+    10 / 0
   rescue ZeroDivisionError
-    puts "You cannot devide a number by zero"
+    puts 'You cannot divide a number by zero'
   end
 ```
 
@@ -579,9 +555,9 @@
   ```Ruby
     begin
       lucky_num = [1, 2, 3, 4, 5, 6, 7]
-      puts lucky_num["dog"]
-    rescue TypeError => error
-      puts "Wrong format type, #{error}"
+      puts lucky_num['dog']
+    rescue TypeError => e
+      puts "Wrong format type, #{e}"
     end
   ```
 
@@ -592,20 +568,21 @@
 - We can define the class attributes using **attr_accessor**
 
   ```Ruby
+    # Create a book class
     class Book
       attr_accessor :title, :author, :pages
     end
 
-    book1 = Book.new()
-    book1.title = "Harry Potter"
-    book1.author = "JK Rowling"
+    book1 = Book.new
+    book1.title = 'Harry Potter'
+    book1.author = 'JK Rowling'
     book1.pages = 400
 
     puts book1.title
 
-    book2 = Book.new()
-    book2.title = "Lord of the Rings"
-    book2.author = "Tolkein"
+    book2 = Book.new
+    book2.title = 'Lord of the Rings'
+    book2.author = 'Tolkein'
     book2.pages = 500
 
     puts book2.author
@@ -616,22 +593,21 @@
 [Go Back to Contents](#contents)
 
 ```Ruby
+  # Create a book class
   class Book2
     attr_accessor :title, :author, :pages
+
     def initialize(title, author, pages)
-      puts "Creating Book"
-      @title = title;
-      @author = author;
-      @pages = pages;
+      puts 'Creating Book'
+      @title = title
+      @author = author
+      @pages = pages
     end
   end
 
-  book3 = Book2.new("Harry Potter", "JK Rowling", 400)
-
+  book3 = Book2.new('Harry Potter', 'JK Rowling', 400)
   puts book3.title
-
-  book4 = Book2.new("Lord of the Rings", "Tolkein", 500)
-
+  book4 = Book2.new('Lord of the Rings', 'Tolkein', 500)
   puts book4.author
 ```
 
@@ -640,31 +616,26 @@
 [Go Back to Contents](#contents)
 
 ```Ruby
+  # Create a student class
   class Student
     attr_accessor :name, :major, :gpa
-    def initialize (name, major, gpa)
-      @name = name;
-      @major = major;
-      @gpa = gpa;
+
+    def initialize(name, major, gpa)
+      @name = name
+      @major = major
+      @gpa = gpa
     end
 
-    def has_honors
-      if @gpa >= 3.5
-        return true
-      end
-
-      return false
+    def honors
+      @gpa >= 3.5
     end
-
   end
 
-  student1 = Student.new('Jim', "Business", 2.6)
-  student2 = Student.new('Pam', "Art", 3.6)
+  student1 = Student.new('Jim', 'Business', 2.6)
+  student2 = Student.new('Pam', 'Art', 3.6)
 
-  puts student1.has_honors()
-  # false
-  puts student2.has_honors()
-  # true
+  puts student1.honors
+  puts student2.honors
 ```
 
 #### Inheritance
@@ -672,39 +643,44 @@
 [Go Back to Contents](#contents)
 
 ```Ruby
+  # Create a chef class
   class Chef
     def make_chicken
-      puts "The chef makes chicken"
+      puts 'The chef makes chicken'
     end
+
     def make_salad
-      puts "The chef makes salad"
+      puts 'The chef makes salad'
     end
+
     def make_special_dish
-      puts "The chef makes bbq ribs"
+      puts 'The chef makes bbq ribs'
     end
   end
 
+  # Create a chef class
   class ItalianChef < Chef
     def make_special_dish
-      puts "The chef makes eggplant parm"
+      puts 'The chef makes eggplant parm'
     end
+
     def make_pasta
-      puts "The chef makes pasta"
+      puts 'The chef makes pasta'
     end
   end
 
-  chef1 = Chef.new()
-  chef1.make_chicken()
+  chef1 = Chef.new
+  chef1.make_chicken
   # The chef makes chicken
-  chef1.make_special_dish()
+  chef1.make_special_dish
   # The chef makes bbq ribs
 
-  chef2 = ItalianChef.new()
-  chef2.make_salad()
+  chef2 = ItalianChef.new
+  chef2.make_salad
   # The chef makes salad
-  chef2.make_special_dish()
+  chef2.make_special_dish
   # The chef makes eggplant parm
-  chef2.make_pasta()
+  chef2.make_pasta
   # The chef makes pasta
 ```
 
@@ -715,6 +691,9 @@
 - in `module_tools.rb`
 
   ```Ruby
+    # frozen_string_literal: true
+
+    # Tools module
     module Tools
       def say_hi(name)
         puts "hello #{name}"
@@ -729,10 +708,14 @@
 - in `basics.rb`
 
   ```Ruby
-    require_relative "module_tools.rb"
-    include Tools
-    Tools.say_hi("Roger")
-    # hello Roger
-    Tools.say_bye("Roger")
-    # bye Roger
+    require_relative 'module_tools'
+
+    # Creates a dummy class
+    class Dummy
+      include Tools
+    end
+
+    new_var = Dummy.new
+    new_var.say_hi('Roger')
+    new_var.say_bye('Roger')
   ```
