@@ -110,9 +110,7 @@ if new_grocery; fruit_nine = "pear"; else; fruit_nine = "banana"; end
 puts fruit_nine
 puts ""
 
-
 # ~> Case Expressions (Swtich/Case)
-
 def get_day_name day
   case day
   when "mon"
@@ -183,7 +181,6 @@ lets_play({ kind: "video game", time: "8PM", where: "Thaisa's house" })
 puts ""
 
 # ~> Array
-
 my_array = Array.new(20)
 puts my_array.length
 puts ""
@@ -195,18 +192,69 @@ my_array_two << "third item"
 puts my_array_two
 puts ""
 
+family = ['Roger', 'Thaisa' , 'Emilia', 'Yumi', 'Mike']
+
+family.map! do |family_member|
+  "#{family_member} has a cellphone"
+end
+puts family
+puts ''
+
+family_two = ['Ronaldo', 'Priscila', 'Kenzo', 'Joy']
+
+family_two.map.with_index do |family_member, idx|
+  puts "#{idx} - #{family_member}"
+end
+puts ''
+
+numbers = [1, 2, 3]
+numbers.map!{|n| n.to_s}
+puts numbers
+puts ''
+
+numbers_two = [11, 12, 13]
+numbers_two.map!(&:to_s)
+puts numbers_two
+puts ''
+
+whole_family = [
+  { name: 'Emilia' },
+  { name: 'Priscila' },
+  { name: 'Ronaldo' },
+  { name: 'Roger' },
+  { name: 'Thaisa' },
+  { name: 'Joy' },
+  { name: 'Mike' },
+  { name: 'Yumi' }
+]
+
+whole_family.each do |member|
+  puts member[:name]
+end
+puts ''
+
+users_one = whole_family.map{|member| "users_one #{member[:name]}"}
+puts users_one
+puts ''
+
+# users_two = whole_family.map(&:['name'])
+# puts users_two
+# puts ''
+
 # ~> RegEx
 fruits = "applebananaorange"
 result = fruits.match("banana")
 puts result
 
-regex = Regexp.new /banana/
+regex = Regexp.new(/banana/)
 result_two = fruits.match(regex)
 puts result_two
 
 puts fruits.sub("banana", " ")
 puts fruits.sub(/(banana)/, " \\1 ")
 puts fruits.sub(/(banana)/, " #{$1} ")
+puts ''
+
 # ~> Class
 class Person
   def initialize(first_name, last_name)
@@ -226,7 +274,6 @@ end
 person_one = Person.new("Roger", "Takeshita")
 puts person_one.return_first_name, person_one.return_last_name
 
-
 class Noise
   def self.talking
     puts "Someone is talking"
@@ -242,29 +289,28 @@ class Banana
     @kind = "Lady Finger" # Instance Variable
   end
 
-  def get_kind
+  def kind
     @kind
   end
 
-  def self.get_author
+  def self.author
     @@author
   end
 
-  def self.set_author= new_name
+  def self.author= new_name
     @@author = new_name
   end
 end
 
-# puts Banana.get_author
+# puts Banana.author
 # banana_new = Banana.new
-# puts banana_new.get_kind
+# puts banana_new.kind
 
-puts Banana.get_author
-Banana.set_author = "Thaisa"
-puts Banana.get_author
+puts Banana.author
+Banana.author = "Thaisa"
+puts Banana.author
 
-
-class Banana_Two
+class BananaTwo
   attr_accessor :author
 
   def initialize
@@ -272,14 +318,15 @@ class Banana_Two
   end
 end
 
-banana_two = Banana_Two.new
+banana_two = BananaTwo.new
 puts banana_two.author
 banana_two.author = "Cabecinha"
 puts banana_two.author
 
+puts BananaTwo.new
+puts BananaTwo.new.inspect
 
 # ~> Module
-
 module Moveable
   def running
     "I'm running"
@@ -294,11 +341,11 @@ module Moveable
   end
 end
 
-class Person_Two
+class PersonTwo
   include Moveable
 end
 
-person_two = Person_Two.new
+person_two = PersonTwo.new
 puts person_two.running
 puts person_two.walking
 puts person_two.jogging

@@ -14,7 +14,16 @@
       - [Null](#null)
       - [Array](#array)
         - [DEFINED SIZE](#defined-size)
+        - [LENGTH](#length)
+        - [INCLUDE?](#include)
+        - [REVERSE](#reverse)
+        - [SORT](#sort)
+        - [MAP](#map)
+        - [MAP WITH INDEX](#map-with-index)
+        - [MAP TO STRINGS](#map-to-strings)
+        - [EACH_WITH_INDEX](#each_with_index)
         - [PUSH](#push)
+        - [POP](#pop)
       - [Hash/Object/Dictionary](#hashobjectdictionary)
         - [HASHROCKET =>](#hashrocket-)
     - [Methods](#methods)
@@ -33,6 +42,7 @@
     - [External File](#external-file)
     - [Handling Errors](#handling-errors)
     - [Class](#class)
+      - [INSPECT](#inspect)
       - [Initializer Methods (Constructors)](#initializer-methods-constructors)
       - [Object Methods / Instance Methods](#object-methods--instance-methods)
       - [Getters / Setters](#getters--setters)
@@ -309,38 +319,6 @@
     # Thaisa
   ```
 
-- Length()
-
-  ```Ruby
-    puts friends.length
-    # 3
-  ```
-
-- Include?
-
-  ```Ruby
-    puts friends.include? "Yumi"
-    # true
-  ```
-
-- Reverse()
-
-  ```Ruby
-    puts friends.reverse
-    # Mike
-    # Yumi
-    # Thaisa
-  ```
-
-- Sort()
-
-  ```Ruby
-    puts friends.sort
-    # Mike
-    # Thaisa
-    # Yumi
-  ```
-
 ##### DEFINED SIZE
 
 [Go Back to Contents](#contents)
@@ -351,31 +329,218 @@
   # 20
 ```
 
-##### PUSH
+##### LENGTH
+
+[Go Back to Contents](#contents)
+
+- [Length](https://ruby-doc.org/core-2.7.2/Array.html#method-i-length)
+
+  ```Ruby
+    puts friends.length
+    # 3
+  ```
+
+##### INCLUDE?
+
+[Go Back to Contents](#contents)
+
+- [Include?](https://ruby-doc.org/core-2.7.2/Array.html#method-i-include-3F)
+
+  ```Ruby
+    puts friends.include? "Yumi"
+    # true
+  ```
+
+##### REVERSE
+
+[Go Back to Contents](#contents)
+
+- [Reverse](https://ruby-doc.org/core-2.7.2/Array.html#method-i-reverse)
+
+  ```Ruby
+    puts friends.reverse
+    # Mike
+    # Yumi
+    # Thaisa
+  ```
+
+##### SORT
+
+[Go Back to Contents](#contents)
+
+- [Sort](https://ruby-doc.org/core-2.7.2/Array.html#method-i-sort-21)
+
+  ```Ruby
+    puts friends.sort
+    # Mike
+    # Thaisa
+    # Yumi
+  ```
+
+##### MAP
+
+[Go Back to Contents](#contents)
+
+- [Map](https://ruby-doc.org/core-2.7.2/Array.html#method-i-map)
+
+  - In Ruby we can can loop through our array and do some sort of operation using `.map`
+  - `.map` will this new updated array. We can assign to the same variable using `!` (exclamation mark)
+
+    ```Ruby
+      family = ['Roger', 'Thaisa' , 'Yumi']
+
+      family.map! do |family_member|
+        "#{family_member} has a cellphone"
+      end
+      puts family
+      # Roger has a cellphone
+      # Thaisa has a cellphone
+      # Yumi has a cellphone
+    ```
+
+    ```Ruby
+      whole_family = [
+        { name: 'Emilia' },
+        { name: 'Priscila' },
+        { name: 'Ronaldo' },
+        { name: 'Roger' },
+        { name: 'Thaisa' },
+        { name: 'Joy' },
+        { name: 'Mike' },
+        { name: 'Yumi' }
+      ]
+
+      whole_family.each do |member|
+        puts member[:name]
+      end
+      # Emilia
+      # Priscila
+      # Ronaldo
+      # Roger
+      # Thaisa
+      # Joy
+      # Mike
+      # Yumi
+
+      users_one = whole_family.map{|member| "users_one #{member[:name]}"}
+      puts users_one
+      # users_one Emilia
+      # users_one Priscila
+      # users_one Ronaldo
+      # users_one Roger
+      # users_one Thaisa
+      # users_one Joy
+      # users_one Mike
+      # users_one Yumi
+    ```
+
+##### MAP WITH INDEX
 
 [Go Back to Contents](#contents)
 
 ```Ruby
-  my_array_two = []
-  my_array_two.push "first item"
-  puts my_array_two
-  # first item
-  puts my_array_two[0]
-  # first item
+  family_two = ['Ronaldo', 'Priscila', 'Kenzo', 'Joy']
+
+  family_two.map.with_index do |family_member, idx|
+    puts "#{idx} - #{family_member}"
+  end
+  # 0 - Ronaldo
+  # 1 - Priscila
+  # 2 - Kenzo
+  # 3 - Joy
 ```
 
-- Another option is to use the `<<` operator
+##### MAP TO STRINGS
+
+[Go Back to Contents](#contents)
+
+- [map(&:to_s)](https://stackoverflow.com/questions/23041002/what-does-to-s-mean-in-b-mapto-s)
+- Complete method
+
+  ```Ruby
+    numbers = [1, 2, 3]
+    numbers.map!{|n| n.to_s}
+    puts numbers
+    # 1
+    # 2
+    # 3
+  ```
+
+- Shorthand
+
+  ```Ruby
+    numbers_two = [11, 12, 13]
+    numbers_two.map!(&:to_s)
+    puts numbers_two
+    # 11
+    # 12
+    # 13
+  ```
+
+##### EACH_WITH_INDEX
+
+[Go Back to Contents](#contents)
+
+- [each_with_index](https://ruby-doc.org/core-2.7.2/Enumerable.html#method-i-each_with_index)
+
+  ```Ruby
+    family.each_with_index do |family_member, idx|
+      puts "#{idx} - #{family_member}"
+    end
+
+    # 0 - Roger has a cellphone
+    # 1 - Thaisa has a cellphone
+    # 2 - Yumi has a cellphone
+  ```
+
+##### PUSH
+
+[Go Back to Contents](#contents)
+
+- [Push](https://ruby-doc.org/core-2.7.2/Array.html#method-i-push)
 
   ```Ruby
     my_array_two = []
     my_array_two.push "first item"
-    my_array_two << "second item"
-    my_array_two << "third item"
     puts my_array_two
-
     # first item
-    # second item
-    # third item
+    puts my_array_two[0]
+    # first item
+  ```
+
+  ```Ruby
+    a = [ "a", "b", "c" ]
+    a.push("d", "e", "f")
+            #=> ["a", "b", "c", "d", "e", "f"]
+    [1, 2, 3].push(4).push(5)
+            #=> [1, 2, 3, 4, 5]
+  ```
+
+  - Another option is to use the `<<` operator
+
+    ```Ruby
+      my_array_two = []
+      my_array_two.push "first item"
+      my_array_two << "second item"
+      my_array_two << "third item"
+      puts my_array_two
+
+      # first item
+      # second item
+      # third item
+    ```
+
+##### POP
+
+[Go Back to Contents](#contents)
+
+- [Pop](https://ruby-doc.org/core-2.7.2/Array.html#method-i-pop)
+
+  ```Ruby
+    a = [ 'a', 'b', 'c', 'd' ]
+    a.pop     #=> "d"
+    a.pop(2)  #=> ["b", "c"]
+    a         #=> ["a"]
   ```
 
 #### Hash/Object/Dictionary
@@ -929,13 +1094,34 @@
     puts book2.author
   ```
 
+#### INSPECT
+
+[Go Back to Contents](#contents)
+
+- [Inspect](https://ruby-doc.org/core-2.7.2/Object.html#method-i-hash)
+
+  - Returns a string containing a human-readable representation of obj. The default inspect shows the object’s class name, an encoding of the object id, and a list of the instance variables and their values (by calling inspect on each of them). User defined classes should override this method to provide a better representation of obj. When overriding this method, it should return a string whose encoding is compatible with the default external encoding.
+
+    ```Ruby
+      class BananaTwo
+        attr_accessor :author
+
+        def initialize
+          @author = "Mike" # Instance variable
+        end
+      end
+
+      puts BananaTwo.new
+      puts BananaTwo.new.inspect
+    ```
+
 #### Initializer Methods (Constructors)
 
 [Go Back to Contents](#contents)
 
 ```Ruby
   # Create a book class
-  class Book2
+  class BookTwo
     attr_accessor :title, :author, :pages
 
     def initialize(title, author, pages)
@@ -946,9 +1132,9 @@
     end
   end
 
-  book3 = Book2.new('Harry Potter', 'JK Rowling', 400)
+  book3 = BookTwo.new('Harry Potter', 'JK Rowling', 400)
   puts book3.title
-  book4 = Book2.new('Lord of the Rings', 'Tolkein', 500)
+  book4 = BookTwo.new('Lord of the Rings', 'Tolkein', 500)
   puts book4.author
 ```
 
@@ -983,7 +1169,7 @@
 
 - One `@` is an instance variable
 - Two `@@` is a class variable
-- [Stackoverflow](https://stackoverflow.com/questions/17098000/what-is-the-difference-between-and-in-ruby)
+- [Difference between @ vs @@](https://stackoverflow.com/questions/17098000/what-is-the-difference-between-and-in-ruby)
 
   ```Ruby
     class Banana
@@ -993,19 +1179,19 @@
         @kind = "Lady Finger"
       end
 
-      def get_kind
+      def kind
         @kind
       end
 
 
-      def self.get_author
+      def self.author
         @@author
       end
     end
 
-    puts Banana.get_author
+    puts Banana.author
     banana_new = Banana.new
-    puts banana_new.get_kind
+    puts banana_new.kind
     # Roger
     # Lady Finger
   ```
@@ -1024,17 +1210,17 @@
         @kind = "Lady Finger" # Instance Variable
       end
 
-      def get_kind
+      def kind
         @kind
       end
 
 
-      def self.get_author
+      def self.author
         @@author
       end
     end
 
-    puts Banana.get_author
+    puts Banana.author
     # Roger
   ```
 
@@ -1043,7 +1229,7 @@
   - To create a setter we need to add `=` in the end of the function
 
     ```Ruby
-      def self.set_author= new_name
+      def self.author= new_name
         @@author = new_name
       end
     ```
@@ -1056,22 +1242,22 @@
           @kind = "Lady Finger" # Instance Variable
         end
 
-        def get_kind
+        def kind
           @kind
         end
 
-        def self.get_author
+        def self.author
           @@author
         end
 
-        def self.set_author= new_name
+        def self.author= new_name
           @@author = new_name
         end
       end
 
-      puts Banana.get_author
-      Banana.set_author = "Thaisa"
-      puts Banana.get_author
+      puts Banana.author
+      Banana.author = "Thaisa"
+      puts Banana.author
       # Roger
       # Thaisa
     ```
@@ -1085,12 +1271,12 @@
   - `attr_accessor` creates the getters and setters
   - `attr_writer` creates only the setters
   - `attr_reader` creates only the getters
-  - [Ruby Guides](https://www.rubyguides.com/2018/11/attr_accessor/)
+  - [attr_accessor - Ruby Guides](https://www.rubyguides.com/2018/11/attr_accessor/)
 
 - Instead having to code all the getters and setters, we can use the `attr_...`
 
   ```Ruby
-    class Banana_Two
+    class BananaTwo
       attr_accessor :author
 
       def initialize
@@ -1098,7 +1284,7 @@
       end
     end
 
-    banana_two = Banana_Two.new
+    banana_two = BananaTwo.new
     puts banana_two.author
     banana_two.author = "Cabecinha"
     puts banana_two.author
